@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h1>ToDoDetail</h1>
+  {% if request.user.id == object.author_id %}
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">{{ todo.name }}</h1>
+      <p class="card-text">{{ todo.content }}</p>
+    </div>
+    <div class="card-footer">
+      {{ todo.date }}
+    </div>
+  </div>
+
+  <div>
+    <a href='{% url "toDoList:index" %}' class='btn btn-outline-info'>一覧</a>
+    <a href='{% url "toDoList:update" todo.pk %}' class='btn btn-outline-info'>編集</a>
+    <a href='{% url "toDoList:delete" todo.pk %}' class='btn btn-outline-danger'>削除</a>
+  </div>
+  {% endif %}
+{% endblock %}
