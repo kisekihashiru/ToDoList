@@ -61,7 +61,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ToDoList.wsgi.application'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '../../app/'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
