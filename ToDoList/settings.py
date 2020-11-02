@@ -14,7 +14,7 @@ SECRET_KEY = 'qc687sj#67oi3fcv!pahktf4uo$m%a#a1um2#ukw)-jq&#1c9l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['xs045556.xsrv.jp']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -66,14 +67,14 @@ LOGIN_REDIRECT_URL = '/'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tdldb',
-        'USER': 'root',
-        'PASSWORD': 'shiina2434',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'tdldb',
+        # 'USER': 'root',
+        # 'PASSWORD': 'shiina2434',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '3306',
     }
 }
 
@@ -115,6 +116,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
